@@ -6,7 +6,7 @@ Proyecto 1 del curso de IPC 2
 
 Para clonar este proyecto utiliza la url
 ```bash
-git clone https://github.com/Willy502/reminders.git
+git clone https://github.com/Willy502/IPC2_Proyecto1_201602734.git
 ```
 
 Para ejecutar el proyecto utiliza el comando de terminal
