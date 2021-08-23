@@ -1,4 +1,5 @@
 from .options import *
+from .proyecto_singleton import *
 
 class Menu:
 
@@ -21,19 +22,28 @@ class Menu:
     def select_menu_option(self, option):
 
         if option == "1":
-            print(option)
+            Options().load_file()
 
         elif option == "2":
-            print(option)
+            if ProyectoSingleton().file is None:
+                print("Para utilizar esta opción debes cargar una ruta primero")
+            else:
+                print(option)
 
         elif option == "3":
-            print(option)
+            if ProyectoSingleton().file is None:
+                print("Para utilizar esta opción debes cargar una ruta primero")
+            else:
+                print(option)
 
         elif option == "4":
             Options().student_information()
 
         elif option == "5":
-            print(option)
+            if ProyectoSingleton().file is None:
+                print("Para utilizar esta opción debes cargar una ruta primero")
+            else:
+                print(option)
 
         elif option == "6":
             quit()
