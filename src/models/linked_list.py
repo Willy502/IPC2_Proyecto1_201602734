@@ -1,4 +1,4 @@
-from .ground import *
+from .nodo import *
 
 class LinkedList:
 
@@ -7,12 +7,12 @@ class LinkedList:
 
     def insert(self, ground):
         if self.first is None:
-            self.first = Ground(ground = ground)
+            self.first = Nodo(ground = ground)
             return
         current = self.first
         while current.next:
             current = current.next
-        current.next = Ground(ground = ground)
+        current.next = Nodo(ground = ground)
 
     def run(self):
         current = self.first

@@ -1,6 +1,7 @@
 class Ground:
 
-    def __init__(self, name, pos_init, pos_end):
+    def __init__(self, name):
         self.name = name
-        self.pos_init = pos_init
-        self.pos_end = pos_end
+        self.pos_init = {}
+        self.pos_end = {}
+        self.positions = []

@@ -1,4 +1,5 @@
 from .proyecto_singleton import *
+from .xml import *
 
 class Options:
 
@@ -15,3 +16,8 @@ class Options:
         answer = input()
         ProyectoSingleton().file = answer
         print("Ruta almacenada exitosamente")
+
+    def process_xml(self):
+        xml = Xml(ProyectoSingleton().file)
+        xml.read()
+    

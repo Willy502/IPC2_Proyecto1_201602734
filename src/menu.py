@@ -28,7 +28,7 @@ class Menu:
             if ProyectoSingleton().file is None:
                 print("Para utilizar esta opción debes cargar una ruta primero")
             else:
-                print(option)
+                Options().process_xml()
 
         elif option == "3":
             if ProyectoSingleton().file is None:
