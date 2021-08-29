@@ -4,3 +4,8 @@ class Position:
         self.x = x
         self.y = y
         self.gas = gas
+        # Datos para matriz
+        self.top = None
+        self.bottom = None
+        self.left = None
+        self.right = None

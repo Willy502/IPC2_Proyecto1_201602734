@@ -49,6 +49,7 @@ class Xml:
                 ground.positions = positions
 
                 print("")
+                positions.build_matrix()
                 print(name, " cargado exitosamente")
                 
                 Helper().clear_screen(wait=True)
