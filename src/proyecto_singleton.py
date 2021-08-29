@@ -2,7 +2,6 @@ class ProyectoSingleton(object):
 
     __instance = None
     file = None
-    linked_list = None
 
     def __new__(cls):
         if ProyectoSingleton.__instance is None:

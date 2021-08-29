@@ -1,9 +1,9 @@
 import xml.etree.ElementTree as ET
-import time
-from os import system, name as sys_name
 from src.models.linked_list import *
 from src.models.ground import *
 from src.proyecto_singleton import *
+from src.models.position import *
+from commons.helper import *
 
 class Xml:
 
@@ -14,55 +14,46 @@ class Xml:
         tree = ET.parse(self.file_path)
         grounds = tree.getroot()
 
-        linked_list = LinkedList()
+        print("Ingresa el nombre del terreno")
+        print("> ", end="")
+        ground_name = input()
+
+        found = False
 
         for terrain in grounds:
             name = terrain.attrib["nombre"]
-            print("Leyendo ", name, " ...")
-            time.sleep(2)
             ground = Ground(name)
-            first = True
+            positions = LinkedList()
 
-            for element in terrain:
+            if name == ground_name:
+                found = True
+
+                for element in terrain:
+                    
+                    if element.tag == "posicioninicio":
+                        init_dict = {}
+                        for pos_in in element:
+                            init_dict[pos_in.tag] = int(pos_in.text)
+                        ground.pos_init = init_dict
+
+                    elif element.tag == "posicionfin":
+                        end_dict = {}
+                        for pos_end in element:
+                            end_dict[pos_end.tag] = int(pos_end.text)
+                        ground.pos_end = end_dict
+
+                    else:
+                        pos = Position(int(element.attrib["x"]), int(element.attrib["y"]), int(element.text))
+                        positions.insert(pos)
+
+                ground.positions = positions
+
+                print("")
+                print(name, " cargado exitosamente")
                 
-                if element.tag == "posicioninicio":
-                    print("Leyendo posicion Inicial ...")
-                    time.sleep(2)
-                    init_dict = {}
-                    for pos_in in element:
-                        init_dict[pos_in.tag] = pos_in.text
-                    ground.pos_init = init_dict
+                Helper().clear_screen(wait=True)
 
-                elif element.tag == "posicionfin":
-                    print("Leyendo posicion Final ...")
-                    time.sleep(2)
-                    end_dict = {}
-                    for pos_end in element:
-                        end_dict[pos_end.tag] = pos_end.text
-                    ground.pos_end = end_dict
-
-                else:
-                    if first:
-                        print("Leyendo posiciones ...")
-                        time.sleep(2)
-                        first = False
-                        
-                    pos_dict = {
-                        "x" : element.attrib["x"],
-                        "y" : element.attrib["y"],
-                        "gas" : element.text
-                    }
-                    ground.positions.append(pos_dict)
-
-            linked_list.insert(ground)
-            print(name, " cargado exitosamente")
-            time.sleep(2)
-
-            if sys_name == 'nt':
-                _ = system('cls')
-        
-            else:
-                _ = system('clear')
-
-        ProyectoSingleton().linked_list = linked_list
-        print("Lista enlazada creada exitósamente")
+        if found != True:
+            print("")
+            print("Terreno no encontrado")
+            Helper().clear_screen(wait=True)

@@ -4,4 +4,4 @@ class Ground:
         self.name = name
         self.pos_init = {}
         self.pos_end = {}
-        self.positions = []
+        self.positions = None

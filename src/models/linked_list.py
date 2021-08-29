@@ -5,17 +5,19 @@ class LinkedList:
     def __init__(self):
         self.first = None
 
-    def insert(self, ground):
+    def insert(self, position):
         if self.first is None:
-            self.first = Nodo(ground = ground)
+            self.first = Nodo(position = position)
             return
         current = self.first
         while current.next:
             current = current.next
-        current.next = Nodo(ground = ground)
+        current.next = Nodo(position = position)
 
     def run(self):
         current = self.first
+        counter = 0
         while current != None:
-            print("Ground: ", current.ground.name)
+            counter += 1
+            print(counter,". ", current.position.gas)
             current = current.next

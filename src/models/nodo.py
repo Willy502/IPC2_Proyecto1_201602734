@@ -1,5 +1,5 @@
 class Nodo:
 
-    def __init__(self, ground=None, next=None):
-        self.ground = ground
+    def __init__(self, position=None, next=None):
+        self.position = position
         self.next = next
