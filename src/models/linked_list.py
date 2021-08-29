@@ -100,7 +100,11 @@ class LinkedList:
         elif top.gas == bottom.gas:
             vertical = self.random(top, bottom)
 
-        if horizontal.gas > vertical.gas:
+        if horizontal is None:
+            return vertical
+        elif vertical is None:
+            return horizontal
+        elif horizontal.gas > vertical.gas:
             return vertical
         elif horizontal.gas < vertical.gas:
             return horizontal
