@@ -50,11 +50,9 @@ class Xml:
 
                 print("")
                 positions.build_matrix()
+                positions.run(x_start=ground.pos_init["x"], y_start=ground.pos_init["y"], x_finish=ground.pos_end["x"], y_finish=ground.pos_end["y"])
                 print(name, " cargado exitosamente")
-                
-                Helper().clear_screen(wait=True)
 
         if found != True:
             print("")
             print("Terreno no encontrado")
-            Helper().clear_screen(wait=True)
