@@ -24,6 +24,14 @@ class LinkedList:
             current = current.next
         return None
 
+    def search_node(self, x, y):
+        current = self.first
+        while current != None:
+            if current.position.x == x and current.position.y == y:
+                return current
+            current = current.next
+        return None
+
     def build_matrix(self):
         current = self.first
         while current != None:
@@ -232,11 +240,33 @@ class LinkedList:
         total_gas = 0
         current = finish
         while current != None:
+            current.route = True
             total_gas += current.gas
             current = current.comming_from
         print("Calculando combustible...")
         Helper().clear_screen(wait=True)
         print("Combustible gastado", total_gas)
+        print("Calculando ruta utilizada...")
+        Helper().clear_screen(wait=True)
+        self.print_route()
+        input("Presiona enter para continuar")
+        Helper().clear_screen(wait=False)
 
     def print_route(self):
-        print("|")
+        current = self.first
+        line = current.position.y
+        last = False
+        while last == False:
+            if current.position.y == line:
+                print(" |", 1 if current.position.route == True else 0, end="")
+                current = self.search_node(x=current.position.x+1, y=current.position.y)
+                if current is None:
+                    print(" |")
+                    line += 1
+                    current = self.search_node(x=1, y=line)
+
+            if current.next is None:
+                print(" |", 1 if current.position.route == True else 0, "|", end="")
+                last = True
+
+        print("")

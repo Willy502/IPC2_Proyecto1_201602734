@@ -11,3 +11,4 @@ class Position:
         self.right = None
         self.solved = False
         self.comming_from = None
+        self.route = False
