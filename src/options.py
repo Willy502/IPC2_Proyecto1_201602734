@@ -5,6 +5,7 @@ from commons.helper import *
 class Options:
 
     def student_information(self):
+        Helper().clear_screen(wait=False)
         print("Wilfred Alejandro Barrios Ola")
         print("201602734")
         print("Introducción a la Programación y computación 2 sección 'A'")
@@ -18,7 +19,9 @@ class Options:
         print(" > ", end="")
         answer = input()
         ProyectoSingleton().file = answer
-        print("")
+        Helper().clear_screen(wait=False)
+        print("Almacenando ruta del archivo...")
+        Helper().clear_screen(wait=True)
         print("Ruta almacenada exitosamente")
         Helper().clear_screen(wait=True)
 

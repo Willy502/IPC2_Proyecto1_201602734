@@ -1,8 +1,12 @@
 from graphviz import Digraph
+from commons.helper import *
 
 class Graph:
 
     def build_graph(self, positions, name):
+        Helper().clear_screen(wait=False)
+        print("Generando grafo...")
+        Helper().clear_screen(wait=True)
         dot = Digraph(comment=name, graph_attr={'splines':'polyline', 'rotate':'45'})
         current = positions.first
         while current != None:
@@ -78,3 +82,5 @@ class Graph:
 
         dot.render('output/' + name + '.gv', view=True)
         file_name = dot.filepath + ".pdf"
+        print("Grafo generado exitosamente")
+        Helper().clear_screen(wait=True)

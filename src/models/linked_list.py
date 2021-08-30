@@ -1,6 +1,7 @@
 from .nodo import *
 import random
 from commons.helper import *
+from src.proyecto_singleton import *
 
 class LinkedList:
 
@@ -239,6 +240,7 @@ class LinkedList:
 
         total_gas = 0
         current = finish
+        ProyectoSingleton().finish = finish
         while current != None:
             current.route = True
             total_gas += current.gas

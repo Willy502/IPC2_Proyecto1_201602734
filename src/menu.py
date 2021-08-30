@@ -1,5 +1,7 @@
 from .options import *
 from .proyecto_singleton import *
+from commons.graph import *
+from commons.gen_xml import *
 
 class Menu:
 
@@ -34,7 +36,7 @@ class Menu:
             if ProyectoSingleton().file is None:
                 print("Para utilizar esta opción debes cargar una ruta primero")
             else:
-                print(option)
+                GenXml().generate(ProyectoSingleton().ground, ProyectoSingleton().finish)
 
         elif option == "4":
             Options().student_information()
@@ -43,7 +45,7 @@ class Menu:
             if ProyectoSingleton().file is None:
                 print("Para utilizar esta opción debes cargar una ruta primero")
             else:
-                print(option)
+                Graph().build_graph(positions=ProyectoSingleton().positions, name=ProyectoSingleton().name)
 
         elif option == "6":
             quit()
