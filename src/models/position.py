@@ -9,3 +9,5 @@ class Position:
         self.bottom = None
         self.left = None
         self.right = None
+        self.solved = False
+        self.comming_from = None

@@ -43,7 +43,7 @@ class Xml:
                         ground.pos_end = end_dict
 
                     else:
-                        pos = Position(int(element.attrib["x"]), int(element.attrib["y"]), int(element.text))
+                        pos = Position(x=int(element.attrib["x"]), y=int(element.attrib["y"]), gas=int(element.text))
                         positions.insert(pos)
 
                 ground.positions = positions
